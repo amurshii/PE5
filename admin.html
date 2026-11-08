@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureCrypt — адміністратор</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__logo">&#128274; SecureCrypt</span>
+    <span class="topbar__role">Панель адміністратора</span>
+    <span class="topbar__user" id="who"></span>
+    <button class="btn btn--small" id="logout">Вийти</button>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <div class="panel__head">
+        <h2>Зареєстровані користувачі</h2>
+        <span class="badge" id="count">0</span>
+      </div>
+      <p class="hint">Дані зчитуються з LocalStorage і розшифровуються ключем AES-256-GCM.</p>
+      <div class="table-wrap">
+        <table class="users">
+          <thead>
+            <tr>
+              <th>№</th><th>ПІБ</th><th>Логін</th><th>Email</th><th>Телефон</th>
+              <th>Пароль</th><th>Дата реєстрації</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </div>
+      <label class="check"><input type="checkbox" id="showPass"> Показати паролі</label>
+    </section>
+
+    <section class="panel">
+      <h2>Вміст LocalStorage (ключ «encryptedUsers»)</h2>
+      <p class="hint">Так дані виглядають у сховищі браузера: лише вектор ініціалізації та шифротекст.</p>
+      <pre class="raw" id="raw"></pre>
+    </section>
+  </main>
+
+  <script src="js/crypto.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
